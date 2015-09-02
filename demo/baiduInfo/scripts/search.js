@@ -1,4 +1,5 @@
-
+layout:false
+---
 $(function(){
 	$("#inputTxt").keyup(function(event){
 		var myEvent = event || window.event;

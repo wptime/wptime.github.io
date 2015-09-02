@@ -155,7 +155,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="使用jsonp跨域调用百度js实现的智能提示框">使用jsonp跨域调用百度js实现的智能提示框</h1><h2 id="JSONP原理">JSONP原理</h2><p>JSONP是JSON width padding（填充式或参数式JSON）的简写，是应用JSON的一种新方法，在后来的Web服务中非常流行。<br>JSONP看起来和JSON差不多，只不过是被包含在函数调用中的HSON，就像下面这样</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;JSONP&#26377;&#20004;&#37096;&#20998;&#32452;&#25104;&#65306;&#22238;&#35843;&#20989;&#25968;&#21644;&#25968;&#25454;&#12290;&#22238;&#35843;&#20989;&#25968;&#26159;&#20826;&#21709;&#24212;&#21040;&#26469;&#26102;&#24212;&#35813;&#22312;&#39029;&#38754;&#20013;&#35843;&#29992;&#30340;&#20989;&#25968;&#12290;&#22238;&#35843;&#20989;&#25968;&#30340;&#21517;&#23383;&#19968;&#33324;&#26159;&#22312;&#35831;&#10;&#27714;&#20013;&#25351;&#23450;&#30340;&#12290;&#32780;&#25968;&#25454;&#23601;&#26159;&#20256;&#20837;&#22238;&#35843;&#20989;&#25968;&#30340;JSON&#25968;&#25454;&#12290;&#19979;&#38754;&#26159;&#19968;&#20010;&#20856;&#22411;&#30340;JSONP&#35831;&#27714;&#12290;&#10;&#10;```http://freegeoip.net/?callback=handleResponse</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">callback({<span class="string">"name"</span>:<span class="string">"Nicholas"</span>});
+</code></pre>
+<p>JSONP有两部分组成：回调函数和数据。回调函数是党响应到来时应该在页面中调用的函数。回调函数的名字一般是在请<br>求中指定的。而数据就是传入回调函数的JSON数据。下面是一个典型的JSONP请求。</p>
+<pre><code class="bash">http://freegeoip.net/?callback=handleResponse
+</code></pre>
 <p>这个URL是在请求一个JSONP地理定位服务。通过查询字符串来指定JSONP服务的回调函数参数是很常见的，就像上面的URL<br>所示，这里指定指定的回调函数名字叫handleResponse()。</p>
 <p>JSONP是通过动态 &lt; script &gt;元素来使用的，使用时可以为src属性指定一个跨域URL。这里的&lt; script &gt;元素与&lt; img &gt;元素类<br>似，都有能力不受限制地从其它域加载资源。因为JSONP是有效的JavaScript代码，所以在请求完成后，即在JSONP响应加载到<br>页面中以后，就会立即执行。来看一个例子。</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">handleResponse</span>(<span class="params">response</span>) </span>{
@@ -173,7 +177,11 @@ script.src = <span class="string">"http://freegeoip.net/json/?callback=handleRes
     region_name：<span class="string">"辽宁"</span>
 });
 </code></pre><p>我们不会看到这个运行函数，因为它在<a href="http://freegeoip.net" target="_blank" rel="external">http://freegeoip.net</a> 中，我们只需要动态添加&lt; script &gt;调用就行,前端所需要做的是知道这<br>个域有这些数据，在本地完成第一段代码进行调用即可，这样就能完成整个过程，有效弹出信息。</p>
-<h2 id="百度智能提示框的完成">百度智能提示框的完成</h2><p>首先要我们要知道自动补全的数据是从个url中获取到的，在百度中随便输入一个字符，比如关键字a，请求如图</p>
+<h2 id="百度智能提示框的完成">百度智能提示框的完成</h2><p>首先要我们要知道自动补全的数据是从个url中获取到的，在百度中随便输入一个字符，比如关键字a，按F12请求如图  </p>
+<p>图一：  </p>
+<p><img src="/demo/baiduInfo/images/1.jpg" alt="Alt text"><br>图二：  </p>
+<p><img src="/demo/baiduInfo/images/2.jpg" alt="Alt text"><br>图三：  </p>
+<p><img src="/demo/baiduInfo/images/3.jpg" alt="Alt text"></p>
 <p>从图我们看到了输入关键字后，返回的数据及请求的url等许多数据。</p>
 <p>请求方式：get<br>请求参数：wd为输入的关键字，json为格式，p我也不知道，跟着他设置一样就行，sid、req、csor还是不知道有什么用，根据测<br>试，可有可无cb为回调函数，我们可以自定义。</p>
 <p>这样就需要的数据都有了，现在进行如下原生js数据测试</p>

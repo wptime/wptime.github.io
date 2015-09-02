@@ -5,7 +5,10 @@ html,body,img {
 body {
 	width: 100%;
 }
-
+.wrapper {
+	width: 100%;
+	min-height: 500px;
+}
 #logo {
 	position: absolute;
 	width: 300px;
