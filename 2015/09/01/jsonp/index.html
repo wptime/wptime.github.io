@@ -20,7 +20,7 @@ JSONP有两部分组成：回调函数和数据。回调函数是">
 <meta property="og:image" content="http://yoursite.com/demo/baiduInfo/images/1.jpg">
 <meta property="og:image" content="http://yoursite.com/demo/baiduInfo/images/2.jpg">
 <meta property="og:image" content="http://yoursite.com/demo/baiduInfo/images/3.jpg">
-<meta property="og:updated_time" content="2015-09-02T03:39:22.000Z">
+<meta property="og:updated_time" content="2015-09-03T08:19:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jsonp">
 <meta name="twitter:description" content="使用jsonp跨域调用百度js实现的智能提示框JSONP原理JSONP是JSON width padding（填充式或参数式JSON）的简写，是应用JSON的一种新方法，在后来的Web服务中非常流行。JSONP看起来和JSON差不多，只不过是被包含在函数调用中的HSON，就像下面这样
@@ -175,7 +175,7 @@ JSONP有两部分组成：回调函数和数据。回调函数是">
         <h1 id="使用jsonp跨域调用百度js实现的智能提示框">使用jsonp跨域调用百度js实现的智能提示框</h1><h2 id="JSONP原理">JSONP原理</h2><p>JSONP是JSON width padding（填充式或参数式JSON）的简写，是应用JSON的一种新方法，在后来的Web服务中非常流行。<br>JSONP看起来和JSON差不多，只不过是被包含在函数调用中的HSON，就像下面这样</p>
 <pre><code class="bash">callback({<span class="string">"name"</span>:<span class="string">"Nicholas"</span>});
 </code></pre>
-<p>JSONP有两部分组成：回调函数和数据。回调函数是党响应到来时应该在页面中调用的函数。回调函数的名字一般是在请<br>求中指定的。而数据就是传入回调函数的JSON数据。下面是一个典型的JSONP请求。</p>
+<p>JSONP有两部分组成：回调函数和数据。回调函数是当响应到来时应该在页面中调用的函数。回调函数的名字一般是在请<br>求中指定的。而数据就是传入回调函数的JSON数据。下面是一个典型的JSONP请求。</p>
 <pre><code class="bash">http://freegeoip.net/?callback=handleResponse
 </code></pre>
 <p>这个URL是在请求一个JSONP地理定位服务。通过查询字符串来指定JSONP服务的回调函数参数是很常见的，就像上面的URL<br>所示，这里指定指定的回调函数名字叫handleResponse()。</p>
@@ -210,7 +210,7 @@ script.src = <span class="string">"http://freegeoip.net/json/?callback=handleRes
 txt.onkeyup = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
     <span class="keyword">var</span> inputTxt = txt.value;
     <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);
-        script.src = <span class="string">"http://suggestion.baidu.com/su/json/?wd="</span>+inputTxt+<span class="string">"&amp;p=3&amp;cb=getData&amp;t=new Date().getMilliseconds().toString()"</span>;
+        script.src = <span class="string">"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su/json/?wd="</span>+inputTxt+<span class="string">"&amp;p=3&amp;cb=getData&amp;t=new Date().getMilliseconds().toString()"</span>;
         <span class="built_in">document</span>.body.insertBefore(script,<span class="built_in">document</span>.body.firstChild);
     };
 <span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">data</span>) </span>{
@@ -227,7 +227,7 @@ $(<span class="function"><span class="keyword">function</span> (<span class="par
         <span class="keyword">var</span> qsData = { <span class="string">'wd'</span>: inputTxt, <span class="string">'p'</span>: <span class="string">'3'</span>, <span class="string">'cb'</span>: <span class="string">'getData'</span>, <span class="string">'t'</span>: <span class="keyword">new</span> <span class="built_in">Date</span>().getMilliseconds().toString() };
         $.ajax({
             <span class="keyword">async</span>: <span class="literal">false</span>,
-            url: <span class="string">"http://suggestion.baidu.com/su"</span>,
+            url: <span class="string">"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su"</span>,
             type: <span class="string">"GET"</span>,
             dataType: <span class="string">'jsonp'</span>,
             jsonp: <span class="string">'jsoncallback'</span>,
@@ -257,11 +257,15 @@ $(<span class="function"><span class="keyword">function</span> (<span class="par
     
 <nav id="article-nav">
   
-  
-    <a href="/1940/10/24/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <strong class="article-nav-caption">></strong>
+    <a href="/2015/09/03/cavans绘图小入门及炫丽时钟demo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          canvas小入门及炫丽时钟demo
+        
+      </div>
     </a>
+  
   
 </nav>
 

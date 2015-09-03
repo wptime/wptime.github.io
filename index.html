@@ -128,6 +128,82 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-cavans绘图小入门及炫丽时钟demo" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/03/cavans绘图小入门及炫丽时钟demo/" class="article-date">
+  	<time datetime="2015-09-03T08:24:43.000Z" itemprop="datePublished">2015-09-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/03/cavans绘图小入门及炫丽时钟demo/">canvas小入门及炫丽时钟demo</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="canvas小入门及绘图原理">canvas小入门及绘图原理</h1><p>Canvas是HTML5新增的一个元素，该元素专门用于绘制图形。但实际上，Canvas元素自身并不绘制图形，它只是一张空画布。如<br>果开发则需要向Canvas上绘制图形，则必须使用JavaScript脚本进行绘制。</p>
+<p>建立一个画布很简单只需要在html中加入这样的一段代码  </p>
+<pre><code class="bash">&lt;canvas&gt;&lt;/canvas&gt;
+</code></pre>
+<h2 id="使用canvas进行绘图">使用canvas进行绘图</h2><pre><code><span class="tag">&lt;<span class="title">canvas</span> <span class="attribute">id</span>=<span class="value">"canvas"</span> <span class="attribute">width</span>=<span class="value">"900"</span> <span class="attribute">height</span>=<span class="value">"880"</span> <span class="attribute">style</span>=<span class="value">"border: 1px solid black"</span> &gt;</span><span class="tag">&lt;/<span class="title">canvas</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="openscad">
+    var canvas = document.getElementById<span class="params">(<span class="string">"canvas"</span>)</span>,
+        ctx = canvas.getContext<span class="params">('<span class="number">2</span>d')</span>;<span class="comment">//获取CanvasRenderingContext2D对象</span>
+    ctx.moveTo<span class="params">(<span class="number">100</span>,<span class="number">100</span>)</span>;
+    ctx.lineTo<span class="params">(<span class="number">700</span>,<span class="number">700</span>)</span>;
+    ctx.stroke<span class="params">()</span>;
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><h2 id="原理">原理</h2><p><em>Canvas是基于状态的绘制，先描述出要绘制的状态，然后调用函数绘制</em><br>上述中ctx.moveTo和ctx.lineTo表示绘制的状态，表示要画从坐标（100,100）至（700,700）的线，此时只是状态，而调用<br>stroke()才开始进行绘制。  </p>
+<h2 id="CanvasRenderingContext2D的几个方法">CanvasRenderingContext2D的几个方法</h2><ul>
+<li>moveTo(x,y) ：把Canvas的当前路径的结束点移动到x,y对应的点</li>
+<li>lineTo(x,y) : 把Canvas的当前路径从当前结束点连接到x,y</li>
+<li>stroke() : 沿着Canvas的当前路径绘制边框</li>
+<li>lineWidth : 线条的宽度</li>
+<li>fillStyle ： 设置填充路径的所用的填充风格</li>
+<li>strokeStyle :　设置绘制路径时所用的填充风格</li>
+<li>fill() : 填充当前路径</li>
+<li>beiginPath() : 开始定义路径</li>
+<li>closePath() : 关闭前面定义路径</li>
+</ul>
+<p><em>当我们进行状态的连续绘制时，需要使用beginPath()和closePath开始和结束路径的定义，不然图像会接连绘制</em></p>
+<h2 id="我们使用以上方法绘制一个7色小版块">我们使用以上方法绘制一个7色小版块</h2><p><img src="/demo/canvas-time/images/canvas.png" alt="Alt text"><br>在线演示地址：<a href="/demo/canvas-time/canvas.html">点击跳转</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-jsonp" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -157,7 +233,7 @@
         <h1 id="使用jsonp跨域调用百度js实现的智能提示框">使用jsonp跨域调用百度js实现的智能提示框</h1><h2 id="JSONP原理">JSONP原理</h2><p>JSONP是JSON width padding（填充式或参数式JSON）的简写，是应用JSON的一种新方法，在后来的Web服务中非常流行。<br>JSONP看起来和JSON差不多，只不过是被包含在函数调用中的HSON，就像下面这样</p>
 <pre><code class="bash">callback({<span class="string">"name"</span>:<span class="string">"Nicholas"</span>});
 </code></pre>
-<p>JSONP有两部分组成：回调函数和数据。回调函数是党响应到来时应该在页面中调用的函数。回调函数的名字一般是在请<br>求中指定的。而数据就是传入回调函数的JSON数据。下面是一个典型的JSONP请求。</p>
+<p>JSONP有两部分组成：回调函数和数据。回调函数是当响应到来时应该在页面中调用的函数。回调函数的名字一般是在请<br>求中指定的。而数据就是传入回调函数的JSON数据。下面是一个典型的JSONP请求。</p>
 <pre><code class="bash">http://freegeoip.net/?callback=handleResponse
 </code></pre>
 <p>这个URL是在请求一个JSONP地理定位服务。通过查询字符串来指定JSONP服务的回调函数参数是很常见的，就像上面的URL<br>所示，这里指定指定的回调函数名字叫handleResponse()。</p>
@@ -192,7 +268,7 @@ script.src = <span class="string">"http://freegeoip.net/json/?callback=handleRes
 txt.onkeyup = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
     <span class="keyword">var</span> inputTxt = txt.value;
     <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);
-        script.src = <span class="string">"http://suggestion.baidu.com/su/json/?wd="</span>+inputTxt+<span class="string">"&amp;p=3&amp;cb=getData&amp;t=new Date().getMilliseconds().toString()"</span>;
+        script.src = <span class="string">"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su/json/?wd="</span>+inputTxt+<span class="string">"&amp;p=3&amp;cb=getData&amp;t=new Date().getMilliseconds().toString()"</span>;
         <span class="built_in">document</span>.body.insertBefore(script,<span class="built_in">document</span>.body.firstChild);
     };
 <span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">data</span>) </span>{
@@ -209,7 +285,7 @@ $(<span class="function"><span class="keyword">function</span> (<span class="par
         <span class="keyword">var</span> qsData = { <span class="string">'wd'</span>: inputTxt, <span class="string">'p'</span>: <span class="string">'3'</span>, <span class="string">'cb'</span>: <span class="string">'getData'</span>, <span class="string">'t'</span>: <span class="keyword">new</span> <span class="built_in">Date</span>().getMilliseconds().toString() };
         $.ajax({
             <span class="keyword">async</span>: <span class="literal">false</span>,
-            url: <span class="string">"http://suggestion.baidu.com/su"</span>,
+            url: <span class="string">"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su"</span>,
             type: <span class="string">"GET"</span>,
             dataType: <span class="string">'jsonp'</span>,
             jsonp: <span class="string">'jsoncallback'</span>,
@@ -230,65 +306,6 @@ $(<span class="function"><span class="keyword">function</span> (<span class="par
 </code></pre><p>点击查看效果：<a href="/demo/baiduInfo/jquery.html">点击跳转</a>   </p>
 <p>完成JSONP跨域请求后，接下来要完成的就是一些DOM和事件的操作完成智能提示框了  </p>
 <p>源码：<br>完整的提示框点击查看效果：<a href="/demo/baiduInfo/search.html">点击跳转</a> </p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/1940/10/24/hello-world/" class="article-date">
-  	<time datetime="1940-10-24T02:26:18.955Z" itemprop="datePublished">1940-10-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/1940/10/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
       
     </div>
