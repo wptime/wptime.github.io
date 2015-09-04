@@ -180,6 +180,63 @@
 </ul>
 <p><em>当我们进行状态的连续绘制时，需要使用beginPath()和closePath开始和结束路径的定义，不然图像会接连绘制</em></p>
 <h2 id="我们使用以上方法绘制一个7色小版块">我们使用以上方法绘制一个7色小版块</h2><p><img src="/demo/canvas-time/images/canvas.png" alt="Alt text"><br>在线演示地址：<a href="/demo/canvas-time/canvas.html">点击跳转</a></p>
+<h2 id="炫丽时钟制作">炫丽时钟制作</h2><h3 id="制作小球">制作小球</h3><ul>
+<li>arc(x,y,radius,startAngle,endAngle,boolean) : 向Canvas的当前路径上添加一段弧  </li>
+</ul>
+<p>x,y表示坐标，startAngle、endAngle表示开始绘制到结束绘制的角度，boolean表示顺时针还是逆时针绘制，默认为顺时针。</p>
+<h3 id="使用小球绘制数字">使用小球绘制数字</h3><p>利用数字的数据模型即多维数组，在相应位置绘制小球，绘制出数字，下面是0的数据模型</p>
+<pre><code><span class="comment">[
+    <span class="comment">[0,0,1,1,1,0,0]</span>,
+    <span class="comment">[0,1,1,0,1,1,0]</span>,
+    <span class="comment">[1,1,0,0,0,1,1]</span>,
+    <span class="comment">[1,1,0,0,0,1,1]</span>,
+    <span class="comment">[1,1,0,0,0,1,1]</span>,
+    <span class="comment">[1,1,0,0,0,1,1]</span>,
+    <span class="comment">[1,1,0,0,0,1,1]</span>,
+    <span class="comment">[1,1,0,0,0,1,1]</span>,
+    <span class="comment">[0,1,1,0,1,1,0]</span>,
+    <span class="comment">[0,0,1,1,1,0,0]</span>
+]</span> //在1的位置绘制小球能绘制数字0
+</code></pre><h3 id="使小球运动">使小球运动</h3><pre><code><span class="tag">&lt;<span class="title">canvas</span> <span class="attribute">id</span>=<span class="value">"canvas"</span> <span class="attribute">style</span>=<span class="value">"border: 1px solid #aaa;display: block;margin: 50px auto;"</span>&gt;</span>
+    当前的浏览器不支持Canvas,请更换浏览器后再试
+<span class="tag">&lt;/<span class="title">canvas</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="roboconf">
+<span class="component">var ball = {x:312,y:100,r:20,g:2,vx:-4,vy:0,color:"<span class="comment">#005588"};</span>
+window<span class="string">.onload</span> = function() {
+    var canvas = document<span class="string">.getElementById("canvas")</span>,
+        context = canvas<span class="string">.getContext('2d')</span>;
+    canvas<span class="string">.width</span> = 500;
+    canvas<span class="string">.height</span> = 500;
+    setInterval(
+        function() {
+            render(context);
+            update();
+        }</span>,50);
+};
+
+<span class="component">function update() {
+    ball<span class="string">.x</span> += ball<span class="string">.vx</span>;
+    ball<span class="string">.y</span> += ball<span class="string">.vy</span>;
+    ball<span class="string">.vy</span> += ball<span class="string">.g</span>;
+}</span>
+
+<span class="component">function render(ctx) {
+    ctx<span class="string">.clearRect(0</span>, 0, ctx<span class="string">.canvas.width</span>, ctx<span class="string">.canvas.height)</span>;
+    ctx<span class="string">.fillStyle</span> = ball<span class="string">.color</span>;
+    ctx<span class="string">.beginPath()</span>;
+    ctx<span class="string">.arc(ball.x</span>, ball<span class="string">.y</span>, ball<span class="string">.r</span>, 0, 2 * Math<span class="string">.PI)</span>;
+    ctx<span class="string">.closePath()</span>;
+    ctx<span class="string">.fill()</span>;
+}</span>
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>在线演示地址：<a href="/demo/canvas-time/sport.html">点击跳转</a>  </p>
+<h3 id="制作倒计时时钟步骤">制作倒计时时钟步骤</h3><ol>
+<li>使用arc()制作小球</li>
+<li>使用数字模型制作数字</li>
+<li>获取时间，使用setInterval()制作倒计时效果</li>
+<li>制作彩色小球，利用物理学知识让彩色的小球运动  </li>
+</ol>
+<p>在线演示地址：<a href="/demo/canvas-time/index.html">点击跳转</a></p>
 
       
     </div>
